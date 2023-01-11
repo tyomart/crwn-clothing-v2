@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { ProductsContext } from '../../contexts/products.context'
-import SHOP_DATA from '../../shop-data.json'
+//import SHOP_DATA from '../../shop-data.js'
 import './shop.styles.scss'
 import ProductCard from '../../components/product-card/products-card.comp'
 
