@@ -1,42 +1,55 @@
-import './checkout.styles.scss'
-import {  useContext} from 'react'
 
-import { CartContext } from '../../contexts/cart.context'
-//import { SnapshotMetadata } from 'firebase/firestore';
-//import CartItem from '../../components/cart-item/cart-item.comp';
+// import {  useContext} from 'react'
+
+//import { CartContext } from '../../contexts/cart.context'
+
+import { useSelector } from 'react-redux';
+import { selectCartItems, selectCartTotal } from '../../components/store/cart/cart.selector';
+
 import CheckoutItem from '../../components/checkout-item/checkout-item.comp';
 
+import { CheckoutContainer, CheckoutHeader, HeaderBlock, CheckoutTotal } from './checkout.styles.jsx' // styles
 
 const CheckOut = () => {
     // addItemToCart, removeItemToCart, clearItemFromCart -> const below?
-    const { cartItems, cartTotal } = useContext(CartContext);
+    //const { cartItems, cartTotal } = useContext(CartContext);
+    const cartTotal = useSelector(selectCartTotal);
+    const cartItems = useSelector(selectCartItems)
+
 
     return(
-        <div className="checkout-container">
+        <CheckoutContainer>
               
-            <div className='checkout-header'>
-                <div className='header-block'>
+            <CheckoutHeader>
+
+                <HeaderBlock>
                     <span>Product</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+
+                <HeaderBlock>
                     <span>Description</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+
+                <HeaderBlock>
                     <span>Quantity</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+
+                <HeaderBlock>
                     <span>Price</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+
+                <HeaderBlock>
                     <span> Remove </span>
-                </div>
-            </div>
+                </HeaderBlock>
+
+            </CheckoutHeader>
         
             {cartItems.map((cartItem) => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-             <span className='total'>Total: {cartTotal} USD</span>
-        </div>
+             <CheckoutTotal>Total: {cartTotal} USD</CheckoutTotal>
+
+        </CheckoutContainer>
     )
 }
 
