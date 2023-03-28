@@ -4,7 +4,8 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import { store } from './components/store/store';
+import { store, persistor } from './components/store/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import { BrowserRouter } from 'react-router-dom';
 //import { UserProvider } from './contexts/user.context';
@@ -16,7 +17,8 @@ root.render(
 
   <React.StrictMode>
     <Provider store={store}>
-    <BrowserRouter>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
     
       {/* <CategoriesProvider>  <CartProvider>*/}
        
@@ -24,7 +26,8 @@ root.render(
           
         {/* </CartProvider> </CategoriesProvider> */}
       
-      </BrowserRouter>
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

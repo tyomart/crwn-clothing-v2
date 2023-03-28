@@ -1,0 +1,110 @@
+* {
+    font-family: "Open Sans Condensed", sans-serif;
+}
+.main {
+    margin: 20 px;
+    font-size: 18pt;
+    
+    color: indigo;
+    // display: inline-flex;
+}
+
+.simple-txt {
+    margin: 20 px;
+    border-radius: 20px;
+    border: 1px solid;
+    padding: 20px;
+   
+    background-color: lemonchiffon;
+    font-size: 16pt;
+}
+
+@mixin buts-row {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 30px;
+    
+    width:500px;
+    justify-content: space-between;
+    margin: 0 auto 0;
+    border-radius: 20px;
+    border: 1px solid;
+    border-color: #707070;
+
+    background-size: 550px;
+    
+   
+}
+
+.buts-row-1 {
+    @include buts-row;
+    margin: 20 px;
+    background-image:  linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.4) 90%
+      ),
+    url("https://vk-smi.ru/uploads/posts/poster/1610864647_1811.jpg");
+    
+}
+.buts-row-2 {
+    @include buts-row;
+    background-image: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.4) 90%
+      ), 
+    url("https://image01.wallrgb.com/pl/tv/de77de14e8179ae5fa23acdd528f094c.jpg");
+}
+
+@mixin but { 
+    margin: 20px;  
+    font-size: 32pt; 
+    
+      border-radius: 20px; 
+      border: none;
+    //   box-shadow: 1px 2px 5px 1px rgba(20, 10, 15, 0.3);
+      &:hover {
+        transform: scale(1.07);
+        transform: translateY(-5px);
+      }
+}
+@mixin but-inv {
+    color: white;
+    background-color: black; 
+}
+.but-1 {
+@include but;
+    color:#004d05;
+    &:hover {
+        background-color: #0d4d55;
+        border: none;
+    }  
+    }
+    
+.but-1-inv{ 
+    @include but;   
+        
+        border-radius: 10px;
+        &:hover {
+            @include but-inv;
+        }  
+    }
+
+.but-11 {
+    @include but;
+    &:hover {
+        background-color: #fd4d5f;
+        border: none;
+      }    
+}
+
+.but-12 {
+    @include but;
+    &:hover {
+        background-color: #0d0df5;
+        border: none;
+    }  
+}
+

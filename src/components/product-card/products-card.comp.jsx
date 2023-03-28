@@ -8,7 +8,7 @@ import Button, { BUTTON_TYPE_CLASSES } from '../button/button.comp';
 import { ProductCardContainer, Footer, Name, Price } from './products-card.styles.jsx'
 
 
-console.log('PRODUCT CARD COMP FIRED')
+//console.log('PRODUCT CARD COMP FIRED')
 
 const ProductCard = ({ product }) => {
     const { name, price, imageUrl } = product;

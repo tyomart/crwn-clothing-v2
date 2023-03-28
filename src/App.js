@@ -7,9 +7,12 @@ import Navigation from "./routers/navigation/navigation.component"
 import Authent from './components/authentication/auth.comp'
 import Shop from "./routers/shop/shop.comp";
 import CheckOut from "./routers/checkout/checkout.comp";
+import ScssPlay from "./comps_2/scss-use.jsx/scss-use-comp";
 import { useEffect } from "react";
-import { createUserDocumentFromAuth, onAuthStateChangedListener } from "./utils/firebase.utils";
+import { createUserDocumentFromAuth, getCurrentUser, onAuthStateChangedListener } from "./utils/firebase.utils";
 import { setCurrentUser } from "./components/store/user/user.action";
+//import Spinner from "./components/spinner/spinner.comp";
+import { checkUserSession } from "./components/store/user/user.action";
 
 
 const App = () => {
@@ -17,15 +20,8 @@ const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
-      if (user) {
-        createUserDocumentFromAuth(user);
-
-      }
-      dispatch(setCurrentUser(user))
-    })
-      return unsubscribe; 
-}, [dispatch]) // []
+    dispatch(checkUserSession())
+}, []) // []
 
 return ( 
 
@@ -35,8 +31,11 @@ return (
     <Route path='shop/*' element = {<Shop />}/>
     <Route path='auth' element = {<Authent />}/>
     <Route path="checkout" element = {<CheckOut />} />
+    <Route path='p' element = {<ScssPlay />} />
   </Route>
+  
 </Routes>
+
 )
 
 
